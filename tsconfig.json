@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "types": ["gatsby", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["src/shared/components/*"],
+      "@/ui/*": ["src/shared/ui/*"],
+      "@/styles/*": ["src/shared/styles/*"],
+      "@/utils/*": ["src/shared/utils/*"],
+      "@/types/*": ["src/shared/types/*"],
+      "@/features/*": ["src/features/*"],
+      "@/atoms/*": ["src/shared/atoms/*"],
+      "@/hooks/*": ["src/shared/hooks/*"],
+      "@/providers/*": ["src/shared/providers/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "gatsby-*.js"],
+  "exclude": ["node_modules"]
+}
