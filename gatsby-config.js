@@ -1,27 +1,32 @@
 /**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+ * Gatsby configuration
  */
 
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
+/** @type {import('gatsby').GatsbyConfig} */
 module.exports = {
+  graphqlTypegen: true,
   siteMetadata: {
-    title: `Andy Blog`,
+    title: `Andy Tech Blog`,
     author: {
-      name: `김규회`,
-      summary: `안녕하세요! 프론트엔드 개발자 Andy입니다.`,
+      name: `개발자 앤디`,
+      summary: `프론트엔드 개발자 Andy의 기록과 실험실`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `좌충우돌 규회의 개발 기술블로그`,
+    siteUrl: `https://kimkyuhoi.github.io`,
     social: {
-      twitter: `kylemathews`,
+      twitter: ``,
+      github: `KimKyuHoi`,
+      linkedin: `https://www.linkedin.com/in/%EA%B7%9C%ED%9A%8C-%EA%B9%80-2ba0a5254/`,
+      velog: `https://velog.io/@k_gu_wae123/posts`,
+      email: `kimkyuhoi.dev@gmail.com`,
     },
+    utterancesRepo: `kimkyuhoi/andy-s_blog`,
+    buyMeCoffeeId: `k546khi`,
+    featuredCategories: [`전체`, `개발`, `회고록`],
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -43,16 +48,18 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 960,
             },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: `margin-bottom: 1.25rem`,
             },
           },
           `gatsby-remark-prismjs`,
+          `gatsby-remark-table-of-contents`,
+          `gatsby-remark-autolink-headers`,
         ],
       },
     },
@@ -76,33 +83,28 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                  custom_elements: [{ 'content:encoded': node.html }],
+                });
+              });
             },
             query: `{
               allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
                 nodes {
                   excerpt
                   html
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                    date
-                  }
+                  fields { slug }
+                  frontmatter { title date }
                 }
               }
             }`,
-            output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            output: '/rss.xml',
+            title: 'Andy Tech Blog RSS Feed',
           },
         ],
       },
@@ -110,16 +112,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `Gatsby`,
+        name: `Andy Tech Blog`,
+        short_name: `Andy Tech`,
         start_url: `/`,
         background_color: `#ffffff`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.svg`,
       },
     },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    `gatsby-plugin-sitemap`,
   ],
-}
+};

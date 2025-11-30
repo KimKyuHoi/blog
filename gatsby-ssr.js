@@ -1,12 +1,10 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
- */
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const React = require("react")
+const { wrapRootElement } = require("./src/wrap-root-element")
 
-/**
- * @type {import('gatsby').GatsbySSR['onRenderBody']}
- */
+exports.wrapRootElement = wrapRootElement
+
 exports.onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: `ko` })
 }
