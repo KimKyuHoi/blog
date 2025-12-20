@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
 import PostCard from '@/features/blog/components/PostCard';
-import { Github, Linkedin, Instagram, Link as LinkIcon } from 'lucide-react';
+import { Github, Linkedin, Link as LinkIcon } from 'lucide-react';
 
 const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes as unknown as Queries.MarkdownRemark[];
@@ -45,36 +45,35 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
       >
-        <div>
-          <Headline>개발자 앤디</Headline>
-          <Sub>안녕하세요! 프론트엔드 개발을 좋아하는 개발자 김규회입니다.</Sub>
-          <SocialLinks>
-            <SocialLink
-              href="https://github.com/KimKyuHoi"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github /> GitHub
-            </SocialLink>
-            <SocialLink
-              href="https://www.linkedin.com/in/%EA%B7%9C%ED%9A%8C-%EA%B9%80-2ba0a5254/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin /> LinkedIn
-            </SocialLink>
-            <SocialLink href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <Instagram /> Instagram
-            </SocialLink>
-            <SocialLink
-              href="https://velog.io/@k_gu_wae123/posts"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkIcon /> Velog
-            </SocialLink>
-          </SocialLinks>
-        </div>
+        <ProfileHeader>
+          <ProfileName>김규회</ProfileName>
+          <ProfileRole>Frontend Developer</ProfileRole>
+        </ProfileHeader>
+        <IntroText>
+          사용자의 목소리에서 개선의 실마리를 찾는 개발자입니다. 서비스의 정답은 언제나 사용자에게
+          있다고 믿으며, 작은 문제에서도 개선의 기회를 발견하고 사용자가 체감할 수 있는 가치를
+          만드는 걸 좋아해요.
+        </IntroText>
+        <Divider />
+        <SocialLinks>
+          <SocialLink href="https://github.com/KimKyuHoi" target="_blank" rel="noopener noreferrer">
+            <Github /> GitHub
+          </SocialLink>
+          <SocialLink
+            href="https://www.linkedin.com/in/%EA%B7%9C%ED%9A%8C-%EA%B9%80-2ba0a5254/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin /> LinkedIn
+          </SocialLink>
+          <SocialLink
+            href="https://velog.io/@k_gu_wae123/posts"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkIcon /> Velog
+          </SocialLink>
+        </SocialLinks>
       </Hero>
 
       <Grid>
@@ -193,10 +192,14 @@ export const pageQuery = graphql`
 `;
 
 const HeroBase = styled.section`
+  background: ${({ theme }) => theme.bg.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  padding: 32px;
   margin-bottom: 48px;
-  padding-bottom: 20px;
 
   @media (max-width: 768px) {
+    padding: 24px;
     margin-bottom: 32px;
   }
 `;
@@ -225,6 +228,37 @@ const Sub = styled.p`
   @media (max-width: 768px) {
     font-size: 16px;
   }
+`;
+
+const ProfileHeader = styled.div`
+  margin-bottom: 20px;
+`;
+
+const ProfileName = styled.h1`
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 800;
+  color: ${({ theme }) => theme.text.primary};
+`;
+
+const ProfileRole = styled.div`
+  font-size: 16px;
+  color: ${({ theme }) => theme.accent};
+  font-weight: 600;
+`;
+
+const IntroText = styled.p`
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: ${({ theme }) => theme.text.muted};
+`;
+
+const Divider = styled.hr`
+  border: none;
+  height: 1px;
+  background: ${({ theme }) => theme.border};
+  margin: 24px 0;
 `;
 
 const SocialLinks = styled.div`
