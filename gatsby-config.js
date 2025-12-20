@@ -26,6 +26,19 @@ module.exports = {
     featuredCategories: [`전체`, `개발`, `회고록`],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-FBQ1CBDSJ9'],
+        gtagConfig: {
+          anonymize_ip: true,
+        },
+        pluginConfig: {
+          head: true,
+          respectDNT: true,
+        },
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-emotion`,
     {
