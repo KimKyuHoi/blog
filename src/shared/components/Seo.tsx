@@ -64,12 +64,12 @@ const Seo: React.FC<SeoProps> = ({ description, title, children }) => {
       <meta
         key="og:image"
         property="og:image"
-        content={`${site.siteMetadata?.siteUrl}/og-image.png`}
+        content={`${site.siteMetadata?.siteUrl}/blog/og-image.png`}
       />
       <meta
         key="twitter:image"
         name="twitter:image"
-        content={`${site.siteMetadata?.siteUrl}/og-image.png`}
+        content={`${site.siteMetadata?.siteUrl}/blog/og-image.png`}
       />
       {children}
     </>
