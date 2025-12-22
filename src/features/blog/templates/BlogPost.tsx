@@ -279,7 +279,26 @@ const PostBody = styled.section`
   img {
     max-width: 100%;
     border-radius: ${({ theme }) => theme.radius.md};
-    margin: 24px 0;
+    margin: 24px auto 8px;
+    display: block;
+  }
+
+  .gatsby-resp-image-wrapper {
+    max-width: 300px !important;
+    margin: 24px auto 8px !important;
+  }
+
+  .gatsby-resp-image-wrapper + em,
+  img + em,
+  p > img + br + em,
+  p:has(> img) + p > em:only-child {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: ${({ theme }) => theme.text.muted};
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-style: normal;
   }
 
   code {
