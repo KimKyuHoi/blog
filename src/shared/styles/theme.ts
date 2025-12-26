@@ -100,19 +100,6 @@ export const theme: Theme = {
   },
 };
 
-// Helper to generate CSS variables
-const toVars = (obj: any, prefix = '-'): string => {
-  return Object.entries(obj)
-    .map(([key, value]) => {
-      const varName = `${prefix}-${key.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())}`;
-      if (typeof value === 'object') {
-        return toVars(value, varName);
-      }
-      return `${varName}: ${value}`;
-    })
-    .join(';');
-};
-
 export const globalStyles = css`
   :root {
     --bg-page: ${lightValues.bg.page};

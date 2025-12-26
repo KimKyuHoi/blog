@@ -205,31 +205,6 @@ const HeroBase = styled.section`
 `;
 const Hero = motion.create(HeroBase);
 
-const Headline = styled.h1`
-  margin: 0 0 12px;
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.text.primary};
-
-  @media (max-width: 768px) {
-    font-size: 32px;
-  }
-`;
-
-const Sub = styled.p`
-  margin: 0 0 24px;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text.muted};
-  line-height: 1.6;
-  max-width: 600px;
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`;
-
 const ProfileHeader = styled.div`
   margin-bottom: 20px;
 `;

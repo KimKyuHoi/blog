@@ -265,10 +265,6 @@ const InfoValue = styled.span`
   color: ${({ theme }) => theme.text.muted};
 `;
 
-const IntroSection = styled.div`
-  margin-bottom: 32px;
-`;
-
 const IntroText = styled.p`
   margin: 0;
   font-size: 16px;

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled"
-import { keyframes } from "@emotion/react"
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 
 const shimmer = keyframes`
   0% {
@@ -8,11 +8,11 @@ const shimmer = keyframes`
   100% {
     background-position: 200% 0;
   }
-`
+`;
 
 export const Skeleton = styled.div<{ height?: string; width?: string }>`
-  height: ${({ height }) => height || "20px"};
-  width: ${({ width }) => width || "100%"};
+  height: ${({ height }) => height || '20px'};
+  width: ${({ width }) => width || '100%'};
   background: ${({ theme }) => theme.bg.muted};
   background-image: linear-gradient(
     90deg,
@@ -23,4 +23,4 @@ export const Skeleton = styled.div<{ height?: string; width?: string }>`
   background-size: 200% 100%;
   animation: ${shimmer} 1.5s infinite;
   border-radius: ${({ theme }) => theme.radius.md};
-`
+`;

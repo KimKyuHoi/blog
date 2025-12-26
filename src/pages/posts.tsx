@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import styled from '@emotion/styled';

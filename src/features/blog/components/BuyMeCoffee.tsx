@@ -1,14 +1,14 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import styled from '@emotion/styled';
+import { useStaticQuery, graphql } from 'gatsby';
 
 type CoffeeQuery = {
   site: {
     siteMetadata: {
-      buyMeCoffeeId?: string | null
-    } | null
-  } | null
-}
+      buyMeCoffeeId?: string | null;
+    } | null;
+  } | null;
+};
 
 const BuyMeCoffee: React.FC = () => {
   const data = useStaticQuery<CoffeeQuery>(graphql`
@@ -19,10 +19,10 @@ const BuyMeCoffee: React.FC = () => {
         }
       }
     }
-  `)
-  const id = data?.site?.siteMetadata?.buyMeCoffeeId
+  `);
+  const id = data?.site?.siteMetadata?.buyMeCoffeeId;
 
-  if (!id) return null
+  if (!id) return null;
 
   return (
     <Wrapper>
@@ -31,10 +31,10 @@ const BuyMeCoffee: React.FC = () => {
         Buy me a coffee
       </Button>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default BuyMeCoffee
+export default BuyMeCoffee;
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.border};
   box-shadow: ${({ theme }) => theme.shadow.soft};
   flex-wrap: wrap;
-`
+`;
 
 const Button = styled.a`
   padding: 10px 14px;
@@ -56,4 +56,4 @@ const Button = styled.a`
   background: ${({ theme }) => theme.accent};
   color: white;
   font-weight: 700;
-`
+`;

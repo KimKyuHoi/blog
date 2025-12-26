@@ -27,10 +27,6 @@ const Layout: React.FC<LayoutProps> = ({ location, children }) => {
   const [showToast, setShowToast] = React.useState(false);
   const pathname = location?.pathname || '';
 
-  const isDark = mode === 'dark';
-  const primaryColor = isDark ? '#ffffff' : '#000000';
-  const accentColor = isDark ? '#60a5fa' : '#3b82f6';
-
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('k546kh@gmail.com');
     setShowToast(true);
