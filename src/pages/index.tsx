@@ -391,6 +391,10 @@ const MiniItem = styled.div`
   gap: 4px;
   a {
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
   }
   span {
     color: ${({ theme }) => theme.text.caption};
