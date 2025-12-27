@@ -79,10 +79,8 @@ for (const chunk of chunks) {
 }
 
 // 모든 청크를 메모리에 모은 후 Blob 생성
-const file = new Blob(parts); // 50GB 파일 → 50GB 메모리 필요
+const file = new Blob(parts);
 ```
-
-50GB 파일을 다운로드하면 → 브라우저 메모리도 50GB가 필요합니다.
 
 다운로드가 진행될수록 노트북이 뜨거워지고 배터리가 빠르게 소모되었습니다. 활성 상태 보기를 확인해보니 **Chrome 프로세스의 메모리 점유율이 16.49GB**까지 올라가 있었습니다.
 
