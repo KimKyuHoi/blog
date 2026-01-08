@@ -57,7 +57,7 @@ const activity = [
   },
   {
     period: '24.03 ~ 25.02',
-    title: 'LikeLion',
+    title: 'LikeLion Univ',
     details: ['LikeLion Univ Frontend TF'],
   },
   {
@@ -68,6 +68,24 @@ const activity = [
       'GDG on Campus KNU 3rd Core Member',
       'GDG on Campus KNU 4th Organizer',
     ],
+  },
+];
+
+const openSource = [
+  {
+    role: 'Contributor',
+    name: 'shaka-project/shaka-player',
+    url: 'https://github.com/shaka-project/shaka-player',
+  },
+  {
+    role: 'Contributor',
+    name: 'yorkie-team/codepair',
+    url: 'https://github.com/yorkie-team/codepair',
+  },
+  {
+    role: 'Contributor',
+    name: 'yorkie-team/yorkie-team.github.io',
+    url: 'https://github.com/yorkie-team/yorkie-team.github.io',
   },
 ];
 
@@ -154,6 +172,19 @@ const AboutPage: React.FC<PageProps> = ({ location }) => {
             </Row>
           ))}
         </Timeline>
+
+        <SectionTitle>Open Source</SectionTitle>
+        <OpenSourceList>
+          {openSource.map((item, index) => (
+            <OpenSourceItem key={index}>
+              <OpenSourceRole>{item.role}</OpenSourceRole>
+              <span> – </span>
+              <OpenSourceLink href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.name}
+              </OpenSourceLink>
+            </OpenSourceItem>
+          ))}
+        </OpenSourceList>
       </Container>
     </Layout>
   );
@@ -170,7 +201,7 @@ const Container = styled.div`
 const SectionTitle = styled.h2`
   font-size: 24px;
   font-weight: 700;
-  margin: 48px 0 32px;
+  margin: 48px 0 24px;
   color: ${({ theme }) => theme.text.primary};
 `;
 
@@ -337,5 +368,37 @@ const ProjectDetails = styled.ul`
     &:last-child {
       margin-bottom: 0;
     }
+  }
+`;
+
+const OpenSourceList = styled.ul`
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+`;
+
+const OpenSourceItem = styled.li`
+  font-size: 15px;
+  line-height: 1.8;
+  color: ${({ theme }) => theme.text.muted};
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const OpenSourceRole = styled.span`
+  font-weight: 600;
+  color: ${({ theme }) => theme.text.primary};
+`;
+
+const OpenSourceLink = styled.a`
+  color: ${({ theme }) => theme.accent};
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
   }
 `;
