@@ -817,7 +817,9 @@ a:focus {
   }
 
   /* 모바일에서 코드 블록 반응형 처리 */
-  code, kbd, samp {
+  code,
+  kbd,
+  samp {
     word-break: break-all !important; /* 더 강력한 줄바꿈 */
     white-space: pre-wrap !important; /* 공백 유지하면서 줄바꿈 */
   }
