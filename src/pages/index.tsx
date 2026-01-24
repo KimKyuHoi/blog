@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import styled from '@emotion/styled';
@@ -29,12 +29,7 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
     return arr.slice(0, 12);
   })();
 
-  const [activeCat, setActiveCat] = useState<string>('전체');
-
-  const latest = posts.slice(0, 5);
-  const filtered = latest.filter(
-    (p) => activeCat === '전체' || p.frontmatter?.category === activeCat
-  );
+  const latest = posts.slice(0, 3);
   const picks = posts.filter((p) => p.frontmatter?.featured).slice(0, 3);
   const popular = (picks.length ? picks : posts).slice(0, 5);
 
@@ -80,13 +75,7 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
         <Main>
           <Section>
             <SectionTitle>최신 글</SectionTitle>
-            <MobileTabs>
-              {categories.map((cat) => (
-                <Tab key={cat} active={cat === activeCat} onClick={() => setActiveCat(cat)}>
-                  {cat}
-                </Tab>
-              ))}
-            </MobileTabs>
+
             <List
               initial="hidden"
               animate="visible"
@@ -95,7 +84,7 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
                 visible: { opacity: 1, transition: { staggerChildren: 0.04 } },
               }}
             >
-              {(filtered.length ? filtered : latest).map((post) => (
+              {latest.map((post) => (
                 <motion.div
                   key={post.fields?.slug}
                   variants={{
@@ -128,7 +117,9 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
             <WidgetTitle>카테고리</WidgetTitle>
             <CategoryList>
               {categories.map((cat) => (
-                <li key={cat}>{cat}</li>
+                <li key={cat}>
+                  <Link to={`/posts?category=${cat}`}>{cat}</Link>
+                </li>
               ))}
             </CategoryList>
             <SmallLink to="/posts">모든 글 보기 →</SmallLink>
@@ -315,36 +306,6 @@ const ListBase = styled.div`
 `;
 const List = motion.create(ListBase);
 
-const MobileTabs = styled.div`
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-
-  @media (max-width: 980px) {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    margin-right: -20px;
-    padding-right: 20px;
-    -webkit-overflow-scrolling: touch;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
-const Tab = styled.button<{ active: boolean }>`
-  padding: 7px 12px;
-  border-radius: ${({ theme }) => theme.radius.md};
-  border: 1px solid ${({ theme, active }) => (active ? theme.accent : theme.border)};
-  background: ${({ theme, active }) => (active ? theme.bg.muted : theme.bg.surface)};
-  color: ${({ theme, active }) => (active ? theme.accent : theme.text.primary)};
-  font-weight: 700;
-  cursor: pointer;
-`;
-
 const Widget = styled.div`
   background: ${({ theme }) => theme.bg.surface};
   border-radius: ${({ theme }) => theme.radius.lg};
@@ -368,10 +329,24 @@ const CategoryList = styled.ul`
   li {
     background: ${({ theme }) => theme.bg.muted};
     border: 1px solid ${({ theme }) => theme.border};
-    padding: 6px 10px;
     border-radius: ${({ theme }) => theme.radius.sm};
-    color: ${({ theme }) => theme.text.muted};
     font-size: 13px;
+    transition: all 0.2s ease;
+
+    a {
+      display: block;
+      padding: 6px 10px;
+      color: ${({ theme }) => theme.text.muted};
+      text-decoration: none;
+    }
+
+    &:hover {
+      background: ${({ theme }) => theme.border};
+      transform: translateY(-1px);
+      a {
+        color: ${({ theme }) => theme.text.primary};
+      }
+    }
   }
 `;
 

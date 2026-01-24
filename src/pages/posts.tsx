@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import styled from '@emotion/styled';
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
 import PostCard from '@/features/blog/components/PostCard';
+import useCategory from '@/hooks/useCategory';
 
 const PostsPage: React.FC<PageProps<Queries.PostsPageQuery>> = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes;
@@ -16,7 +17,7 @@ const PostsPage: React.FC<PageProps<Queries.PostsPageQuery>> = ({ data, location
     return Array.from(set);
   })();
 
-  const [active, setActive] = useState<string>('전체');
+  const [active, setActive] = useCategory(location);
 
   const filtered = posts.filter((p) => active === '전체' || p.frontmatter?.category === active);
 
