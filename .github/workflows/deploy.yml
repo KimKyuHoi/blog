@@ -61,6 +61,9 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Clean Gatsby cache
+        run: npm run clean
+
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
