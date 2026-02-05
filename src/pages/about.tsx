@@ -41,9 +41,9 @@ const career = [
 
 const activity = [
   {
-    period: '25.01 ~ ing',
+    period: '25.01',
     title: '오픈소스 기여모임',
-    details: ['오픈소스 기여모임 9기'],
+    details: ['오픈소스 기여모임 10기'],
   },
   {
     period: '24.12 ~ 25.02',
