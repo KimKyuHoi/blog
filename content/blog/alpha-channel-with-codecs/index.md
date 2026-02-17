@@ -44,7 +44,7 @@ Chrome에서 보시게 되면 아래의 사진처럼 보이게 될 겁니다.
 
 팀원분께서 처음으로 제안하신 건 `APNG`였습니다. 저는 `APNG`에 대해 들어본 적이 없어 찾아봤는데, 애니메이션과 Alpha Channel을 모두 지원하는 포맷이었습니다.
 
-<img src="./img.gif" alt="APNG가 적용된 토스인증서 페이지" style="width: 100%; display: block; margin: 0 auto; border-radius: 0;">
+<img src="./img.gif" alt="APNG가 적용된 토스인증서 페이지" loading="lazy" style="width: 100%; display: block; margin: 0 auto; border-radius: 0;">
 <div class="caption">APNG가 적용된 토스인증서 페이지</div>
 
 APNG는 GIF와 비슷한 방식으로 애니메이션을 구현하면서도 기존 PNG와의 하위 호환성을 유지하기 때문에, GIF보다 더 높은 품질을 보여줍니다. 24비트 컬러를 유지하면서 Alpha Channel까지 지원하므로 퀄리티 있는 이미지를 보여주기에는 안성맞춤입니다.
@@ -72,7 +72,7 @@ Baseline 방식에서는 이미지가 위에서부터 한 줄씩 끊기듯 로�
 - 고사양 기기에서도 60fps를 달성하기 어렵고, Android에서는 몇 fps 수준까지 떨어집니다.
 - `<img>` 태그로 동작하기 때문에 `<video>` 태그처럼 Progressive Download가 되지 않고, 느린 네트워크에서는 프레임이 뚝뚝 끊깁니다.
 
-<img src="./avif-support.png" alt="Can I Use - AVIF 브라우저 지원 현황" style="width: 100%; display: block; margin: 0 auto; border-radius: 0;">
+<img src="./avif-support.png" alt="Can I Use - AVIF 브라우저 지원 현황" loading="lazy" style="width: 100%; display: block; margin: 0 auto; border-radius: 0;">
 <div class="caption">AVIF 브라우저 지원 현황 (출처: Can I Use)</div>
 
 결국 애니메이션 AVIF도 답이 아니었습니다.
@@ -95,7 +95,7 @@ Baseline 방식에서는 이미지가 위에서부터 한 줄씩 끊기듯 로�
 </video>
 ```
 
-<video autoplay loop muted playsinline style="max-width: 480px; width: 100%; display: block; margin: 0 auto;">
+<video autoplay loop muted playsinline preload="none" style="max-width: 480px; width: 100%; display: block; margin: 0 auto;">
   <source src="./alpha-demo.mov" type="video/quicktime" />
   <source src="./alpha-demo.webm" type="video/webm" />
 </video>
@@ -113,7 +113,7 @@ VP9 + HEVC 조합으로 문제를 해결하긴 했지만, 솔직히 찝찝한 �
 
 핵심 아이디어는 영상을 두 배 높이로 만들어서, **윗쪽 절반은 원본 컬러**, **아랫쪽 절반은 Alpha Channel을 밝기로 표현한 흑백 영상**으로 구성하는 것입니다. 그리고 WebGL fragment shader로 아랫쪽 절반을 윗쪽에 마스크로 씌우면 투명도가 적용됩니다.
 
-<img src="./video-solution.png" alt="Stacked Alpha Video 방식으로 투명 영상을 적용한 예시" style="width: 100%; display: block; margin: 0 auto; border-radius: 0;">
+<img src="./video-solution.png" alt="Stacked Alpha Video 방식으로 투명 영상을 적용한 예시" loading="lazy" style="width: 100%; display: block; margin: 0 auto; border-radius: 0;">
 <div class="caption">Stacked Alpha Video 방식으로 투명 영상을 적용한 예시 (출처: Jake Archibald)</div>
 
 이 방식의 장점이 꽤 놀라웠는데요.
