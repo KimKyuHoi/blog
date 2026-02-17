@@ -59,7 +59,13 @@ const PostsPage: React.FC<PageProps<Queries.PostsPageQuery>> = ({ data, location
 
 export default PostsPage;
 
-export const Head = () => <Seo title="Posts" pathname="/posts" />;
+export const Head = () => (
+  <Seo
+    title="Posts"
+    pathname="/posts"
+    description="카테고리별 기술 블로그 글 모음. 오픈소스, 프론트엔드 개발, 회고록 등 다양한 주제의 글을 확인하세요."
+  />
+);
 
 export const pageQuery = graphql`
   query PostsPage {

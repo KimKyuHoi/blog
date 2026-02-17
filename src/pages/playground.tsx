@@ -49,7 +49,13 @@ const PlaygroundPage: React.FC<PageProps> = ({ location }) => {
 
 export default PlaygroundPage;
 
-export const Head = () => <Seo title="Playground" pathname="/playground" />;
+export const Head = () => (
+  <Seo
+    title="Playground"
+    pathname="/playground"
+    description="프론트엔드 실험과 사이드 프로젝트 모음. UI 프로토타입, 데이터 시각화 등 다양한 실험을 확인하세요."
+  />
+);
 
 const Header = styled.header`
   margin-bottom: 16px;

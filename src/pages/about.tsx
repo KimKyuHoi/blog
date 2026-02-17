@@ -197,7 +197,13 @@ const AboutPage: React.FC<PageProps> = ({ location }) => {
 
 export default AboutPage;
 
-export const Head = () => <Seo title="About" pathname="/about" />;
+export const Head = () => (
+  <Seo
+    title="About"
+    pathname="/about"
+    description="프론트엔드 개발자 김규회(앤디)의 소개. 경력, 활동, 오픈소스 기여 이력을 확인하세요."
+  />
+);
 
 const Container = styled.div`
   max-width: 720px;

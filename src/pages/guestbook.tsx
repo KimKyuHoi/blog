@@ -32,7 +32,13 @@ const GuestbookPage: React.FC<PageProps> = ({ location }) => {
 
 export default GuestbookPage;
 
-export const Head = () => <Seo title="Guestbook" pathname="/guestbook" />;
+export const Head = () => (
+  <Seo
+    title="Guestbook"
+    pathname="/guestbook"
+    description="앤디의 기술 블로그 방명록. 자유롭게 메시지를 남겨주세요."
+  />
+);
 
 const Header = styled.header`
   margin-bottom: 16px;

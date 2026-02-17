@@ -297,6 +297,12 @@ const PostBody = styled.section`
       font-size: 14.5px;
       line-height: 1.7;
     }
+
+    li {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
   }
 
   .table-wrapper {

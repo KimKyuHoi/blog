@@ -137,6 +137,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
+        host: 'https://kimkyuhoi.github.io',
+        sitemap: 'https://kimkyuhoi.github.io/blog/sitemap-index.xml',
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
