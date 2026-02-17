@@ -66,6 +66,13 @@ jobs:
           PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
 
+      - name: Capture playground thumbnails
+        run: |
+          npx gatsby serve &
+          npx wait-on http://localhost:9000 --timeout 30000
+          node scripts/capture-thumbnails.mjs http://localhost:9000 --out-dir public/playground
+          kill %1 || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

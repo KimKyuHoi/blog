@@ -6,16 +6,11 @@ import Seo from '@/components/Seo';
 
 const projects = [
   {
-    name: 'UI Sandbox',
-    description: '컴포넌트 실험과 인터랙션 프로토타입',
-    link: '#',
-    tags: ['React', 'Animation'],
-  },
-  {
-    name: 'Data Notes',
-    description: '데이터/ML 실험과 시각화 메모',
-    link: '#',
-    tags: ['ML', 'Notebook'],
+    name: 'Stacked Alpha Video',
+    description: 'AV1 stacked alpha 방식과 VP9+HEVC 네이티브 방식의 투명 영상 비교',
+    link: '/playground/stacked-alpha-video',
+    tags: ['Video', 'Alpha Channel', 'AV1'],
+    thumbnail: '/playground/stacked-alpha-video-thumb.png',
   },
 ];
 
@@ -33,13 +28,18 @@ const PlaygroundPage: React.FC<PageProps> = ({ location }) => {
             href={p.link}
             target={p.link.startsWith('http') ? '_blank' : undefined}
           >
-            <h3>{p.name}</h3>
-            <p>{p.description}</p>
-            <TagWrap>
-              {p.tags.map((tag) => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </TagWrap>
+            <Thumbnail>
+              {p.thumbnail ? <img src={p.thumbnail} alt={p.name} /> : <Placeholder />}
+            </Thumbnail>
+            <CardBody>
+              <TagWrap>
+                {p.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </TagWrap>
+              <h3>{p.name}</h3>
+              <p>{p.description}</p>
+            </CardBody>
           </Card>
         ))}
       </Grid>
@@ -73,23 +73,66 @@ const Desc = styled.p`
 
 const Grid = styled.div`
   display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Card = styled.a`
-  display: grid;
-  gap: 8px;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
   background: ${({ theme }) => theme.bg.surface};
-  border: 1px solid ${({ theme }) => theme.border};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  border: 1px solid transparent;
+  border-radius: ${({ theme }) => theme.radius.xl};
   color: inherit;
+  overflow: hidden;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: ${({ theme }) => (theme.mode === 'dark' ? theme.bg.muted : theme.bg.surface)};
+    box-shadow: ${({ theme }) => theme.shadow.hover};
+    transform: translateY(-4px);
+  }
+`;
+
+const Thumbnail = styled.div`
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const Placeholder = styled.div`
+  width: 100%;
+  height: 100%;
+  background: ${({ theme }) => theme.bg.muted};
+`;
+
+const CardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+
   h3 {
     margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: ${({ theme }) => theme.text.primary};
   }
+
   p {
     margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
     color: ${({ theme }) => theme.text.muted};
   }
 `;
@@ -101,9 +144,10 @@ const TagWrap = styled.div`
 `;
 
 const Tag = styled.span`
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: ${({ theme }) => theme.radius.sm};
   background: ${({ theme }) => theme.bg.muted};
-  border: 1px solid ${({ theme }) => theme.border};
-  font-size: 12px;
+  color: ${({ theme }) => theme.text.muted};
+  font-size: 13px;
+  font-weight: 500;
 `;

@@ -71,6 +71,7 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.25rem`,
             },
           },
+          `gatsby-remark-copy-linked-files`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-table-of-contents`,
           `gatsby-remark-autolink-headers`,

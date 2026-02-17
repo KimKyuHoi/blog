@@ -3,7 +3,7 @@ title: 'Netflix 화면을 캡처하면 왜 검은 화면이 나올까?'
 date: '2026-01-09'
 description: '스트리밍 서비스에서 화면 녹화가 안 되는 이유, DRM과 EME/CDM의 동작 원리를 알아봅니다.'
 tags: ['DRM', 'EME', 'CDM', 'Widevine', 'FairPlay']
-category: '개발'
+category: 'Media'
 ---
 
 ## Netflix 화면을 캡처해본 적 있으신가요?

@@ -11,7 +11,7 @@ const navItems = [
   { label: '글', to: '/posts' },
   { label: '소개', to: '/about' },
   { label: '방명록', to: '/guestbook' },
-  // { label: "플레이그라운드", to: "/playground" },
+  { label: '플레이그라운드', to: '/playground' },
 ];
 
 interface LayoutProps {

@@ -342,6 +342,7 @@ const PostBody = styled.section`
 
   img {
     max-width: 100%;
+    height: auto;
     border-radius: ${({ theme }) => theme.radius.md};
     margin: 24px auto 8px;
     display: block;
