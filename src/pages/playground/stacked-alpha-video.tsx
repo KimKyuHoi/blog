@@ -287,10 +287,12 @@ const StackedAlphaVideoPage: React.FC<PageProps> = ({ location }) => {
         <SectionTitle>FAQ</SectionTitle>
 
         <FaqItem>
-          <FaqQuestion>AV1도 알파 채널을 지원하지 않나요?</FaqQuestion>
+          <FaqQuestion>AV1은 왜 알파 채널을 안 쓰나요?</FaqQuestion>
           <SectionDesc>
-            AV1은 브라우저에서 알파 채널을 지원하지 않습니다. VP9 알파 채널은 Chrome/Firefox에서만,
-            HEVC 알파 채널은 Safari에서만 동작하여 크로스 브라우저 대응이 어렵고 파일 크기도 큽니다.
+            AV1 비디오 코덱은 VP9처럼 알파 채널을 네이티브로 포함하는 기능이 없습니다. 그래서 인코딩
+            시 <code>yuv420p</code>로 변환되면서 알파가 사라지고, 원본에서 투명했던 부분은 실제 RGB
+            데이터인 (0, 0, 0)이 그대로 드러나 검정으로 보입니다. VP9 알파는 Chrome/Firefox에서만,
+            HEVC 알파는 Safari에서만 동작하여 크로스 브라우저 대응이 어렵고 파일 크기도 큽니다.
             Stacked Alpha는 코덱의 알파 지원 여부와 관계없이, 코덱이 재생되기만 하면 동작합니다.
           </SectionDesc>
         </FaqItem>
@@ -303,15 +305,6 @@ const StackedAlphaVideoPage: React.FC<PageProps> = ({ location }) => {
             동일하게 넣으면 자연스럽게 흑백이 됩니다. 평소에 &ldquo;투명하게&rdquo; 보이는 것은
             소프트웨어가 이 알파 숫자를 적용해서 렌더링한 결과이지, 알파 데이터 자체가 투명한 것은
             아닙니다.
-          </SectionDesc>
-        </FaqItem>
-
-        <FaqItem>
-          <FaqQuestion>위쪽 영상의 배경이 왜 검정인가요?</FaqQuestion>
-          <SectionDesc>
-            원본 영상에서 투명했던 부분의 실제 RGB 데이터는 (0, 0, 0)입니다. 알파 채널이 있을 때는
-            A=0이라 소프트웨어가 그리지 않아 투명하게 보이지만, <code>yuv420p</code>로 알파를
-            제거하면 그 검정이 그대로 드러납니다. After Effects에서 알파를 끈 것과 같은 상태입니다.
           </SectionDesc>
         </FaqItem>
 

@@ -122,7 +122,7 @@ VP9 + HEVC 조합으로 문제를 해결하긴 했지만, 솔직히 찝찝한 �
 - VP9 + HEVC 조합이 1.1MB + 3.4MB였던 것에 비해, AV1 stacked 방식은 **460KB** 하나로 해결됩니다.
 - AV1을 지원하지 않는 구형 Apple 기기에는 HEVC fallback(1.14MB)을 제공하면 되는데, 이것도 기존 3.4MB보다 훨씬 작습니다. 저희는 애초에 구형 브라우저를 신경 쓸 필요가 없었기 때문에 꽤 이상적이었습니다.
 
-다만 이 방식은 브라우저가 네이티브로 투명도를 처리하는 것이 아니라, **WebGL로 직접 합성해줘야 한다**는 단점이 있습니다. Jake Archibald는 이를 [`<stacked-alpha-video>`](https://www.npmjs.com/package/stacked-alpha-video)라는 Web Component로 만들어 NPM에 공개해두었습니다.
+다만 이 방식은 브라우저가 네이티브로 투명도를 처리하는 것이 아니라, **WebGL로 직접 합성해줘야 한다**는 점이 있습니다. Jake Archibald는 이를 [`<stacked-alpha-video>`](https://www.npmjs.com/package/stacked-alpha-video)라는 Web Component로 만들어 NPM에 공개해두었습니다.
 
 ```html
 <stacked-alpha-video>
